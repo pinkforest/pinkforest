@@ -2,7 +2,7 @@
 
 [![Discord chat][discord-badge]][discord-url]
 
-![meme improving email security should not be a hard choice to make]((https://cdn.jsdelivr.net/gh/pinkforest/pinkforest@main/assets/meme_email_security_8tfuz2.jpg)
+![meme improving email security should not be a hard choice to make](https://cdn.jsdelivr.net/gh/pinkforest/pinkforest@main/assets/meme_email_security_8tfuz2.jpg)
 
 I've just published crate [msg-auth-status] that I'm using in [arewe.at] for e-mail pipelines using my [imap connector].
 
@@ -46,6 +46,8 @@ I still need to write higher level API for a verifier that provides mis-use resi
 
 And I need to get my e-mail client [funnelweb] to use it outside the pipeline for [arewe.at]
 
+I've also created [my own imap4 protocol implementation] from scratch in [yaws-rs] that I intend to integrate in future with my pipelines using only [completion based IO] via [yoloTLS] via [lunatic].
+
 If this work helps you, please consider helping out including providing funding to improve the current e-mail landscape.
 
 You can send me an e-mail to: pinkforest_edu .. the AT thing in between ....  pm.me - or use the e-mail in my GitHub bio and ROT13 decode it.
@@ -56,6 +58,11 @@ You can send me an e-mail to: pinkforest_edu .. the AT thing in between ....  pm
 [RFC 6376]: https://www.rfc-editor.org/rfc/rfc6376.html
 [RFC 8601]: https://datatracker.ietf.org/doc/html/rfc8601
 [funnelweb]: https://github.com/pinkforest/funnelweb
+[my own imap4 protocol implementation]: https://github.com/yaws-rs/imap4spec
+[yaws-rs]: https://github.com/yaws-rs/yaws
+[completion based IO]: https://github.com/yaws-rs/io_uring-utils/tree/main/io-uring-epoll
+[yolotls]: https://github.com/yolotls/yolotls
+[lunatic]: https://github.com/lunatic-solutions/
 
 [discord-badge]: https://img.shields.io/discord/934761553952141402.svg?logo=discord
 [discord-url]: https://discord.gg/rXVsmzhaZa
