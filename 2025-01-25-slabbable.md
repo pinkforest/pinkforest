@@ -68,6 +68,8 @@ So far I've finished [hashbrown](https://docs.rs/hashbrown/latest/hashbrown/) - 
 
 I've also finished slab via [slabbable-slab](https://github.com/yaws-rs/edifice/blob/main/slabbable-impls/slab/src/lib.rs#L27) and stable-vec via [slabbable-stablevec](https://github.com/yaws-rs/edifice/blob/main/slabbable-impls/stable-vec/src/lib.rs#L37).
 
+I would like to add impls for [indexset](https://docs.rs/indexset), [fnv](https://docs.rs/fnv), [indexmap](https://docs.rs/indexmap) and some more incl. from [this great list of arenas](https://donsz.nl/blog/arenas/).
+
 ## Preferred Slabbable Implementation
 
 I tend to prefer the hashing one as I can easily implement rotating-revolving usize key at usize::MAX instead of re-using previously used keys through slab / stable-vec that typically for example re-use immediately key zero when it has been made vacant instead of incrementing serial counter.
@@ -82,7 +84,7 @@ Or slab non-default SelectedSlab impl
 
 ~/yaws/edifice/slabbable-validation$ env RUSTFLAGS='--cfg slabbable_impl="slab"' cargo bench
 
-1,024,000 linear insert
+10M linear insert
 
 | impl | timing |
 | :--- | :---   |
