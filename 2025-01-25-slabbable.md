@@ -6,9 +6,11 @@
 
 ## So what exactly is [Slabbable](https://docs.rs/slabbable) ?
 
-a trait designed for a very specific use, mainly as the storage layer within my io_uring abstraction involving complicated 3-way ownership and unforgettable lifetimes.
+a trait designed for a very specific use.
 
-## Why?
+I needed it as the storage layer within my io_uring abstractions involving complicated sandwitch of three-way ownership (Kernel-Userspace-Abstraction) and unforgettable lifetimes between them.
+
+## Why be so Abstract ?
 
 I simply wanted a harmonized but yet configurable type that acts a bit like [stable-vec](https://crates.io/crates/stable-vec), [slab](https://crates.io/crates/slab) or [slotmap](https://crates.io/crates/slotmap).
 
