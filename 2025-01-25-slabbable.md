@@ -102,6 +102,8 @@ I need to do more testing but this shows the importance of capacity and bounds p
 
 ## Configurable Abstraction - What cfg()
 
+As you see above, we're using overrideable custom cfg() options to provide global configuration options.
+
 The idea is to give the top-level binary the power to choose the appropriate abstraction over well known good default e.g. as an override without transient dependencies either muddying or breaking the compilation - or worst miscompilation leading to unspecified behaviour.
 
 Often I see crates using feature flags non-optimally to create mutually exclusive configuration knobs when it would make more sense to use configuration or 'cfg' predicates for mutual exclusivity.
@@ -116,7 +118,7 @@ I also found out nobody used non-default backend in curve25519-dalek because pre
 
 ## Configuration Abstraction - Compiler Mandate
 
-Compiler also later formalized linting the expected configuration predicates vs occured ones so it's much less easy to make errors gating through typos - e.g. [cfg lint in curve25519-dalek](https://github.com/dalek-cryptography/curve25519-dalek/blob/main/curve25519-dalek/Cargo.toml#L75).
+Compiler recently formalized linting the expected configuration predicates vs occured ones so it's much less easy to make errors gating through typos - e.g. [cfg lint in curve25519-dalek](https://github.com/dalek-cryptography/curve25519-dalek/blob/main/curve25519-dalek/Cargo.toml#L75).
 
 ## Reduce the cfg() Gates
 
