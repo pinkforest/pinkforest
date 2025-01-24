@@ -126,7 +126,7 @@ Often I see crates using feature flags non-optimally to create mutually exclusiv
 
 If you would like to see more discussion around why using cfg makes more sense, have a look into the issue I keep referring people to: [dalek-cryptography/curve25519-dalek#414](https://github.com/dalek-cryptography/curve25519-dalek/issues/414) where we ended up abstracting backend override with cfg(curve25519_dalek_backend) for the v4 major release as well as cfg(curve25519_dalek_bits) [described](https://github.com/dalek-cryptography/curve25519-dalek/tree/main/curve25519-dalek#bits--word-size) in it's readme.
 
-## Cofiguration Abstraction - Real World cfg()
+## Configuration Abstraction - Real World cfg()
 
 I also found out nobody used non-default backend in curve25519-dalek because pretty much none of the dependant crates "relayed" the configuration options through features -- which may end up later being helped by the rfc and compiler implementation regarding globally mutually exclusive features.
 
@@ -166,6 +166,10 @@ I don't care too much about memory usage at the moment but rather the "worst cas
 I could probably improve ramp-up / down memory usage but I rather just bound the maximum to optimize my use-scenarios.
 
 In server programing I typically like to make it easily able to calculate total resource usage.
+
+Also in general Vec is best used with_capacity(x) as re-allocation can be somewhat slower.
+
+As an example just how slow vec-re-alloc can be compared to using with_capacity see benchmarking in my [codex-percent crate](https://crates.io/crates/codex-percent) and how close it comes to static pseudo-const-vec (a bit like [heapless](https://docs.rs/heapless) Vec).
 
 ## Obligatory Support my Work Msg
 
