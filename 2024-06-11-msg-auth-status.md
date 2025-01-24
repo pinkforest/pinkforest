@@ -2,7 +2,7 @@
 
 [![Discord chat][discord-badge]][discord-url]
 
-![meme improving email security should not be a hard choice to make](https://cdn.jsdelivr.net/gh/pinkforest/pinkforest@main/assets/meme_email_security_8tfuz2.jpg)
+![meme improving email security should not be a hard choice to make](./assets/meme_email_security_8tfuz2.jpg)
 
 I've just published crate [msg-auth-status] that I'm using in [arewe.at] for e-mail pipelines using my [imap connector].
 
