@@ -2,11 +2,11 @@
 
 ![meme slip slop slap](./assets/slip-slop-slap.jpg)
 
-*Note: It's summer time down here so maybe I should have named this as slip-slop-slap instead.*
+*Note: It's summer down here so I could have just named this as slip-slop-slap instead. j/k*
 
 ## So what exactly is [Slabbable](https://docs.rs/slabbable) ?
 
-a trait designed for a very specific use, mainly in my io_uring storage layer.
+a trait designed for a very specific use, mainly as the storage layer within my io_uring abstraction involving complicated 3-way ownership and unforgettable lifetimes.
 
 ## Why?
 
@@ -16,7 +16,7 @@ It helps me test my specific use-scenario and validate the exact guarantees I ne
 
 ## How do I use it?
 
-You can look at the [validation tests](https://github.com/yaws-rs/edifice/tree/main/slabbable-validation/src/lib.rs) or my [heavily-work-in-progress yaws io_uring abstractions](https://github.com/yaws-rs/io_uring-utils/blob/mail/io-uring-epoll/src) how I use the Slabbable (or SelectedSlab) as the storage layer for the extended lifetime and complicated ownership items without simply std::mem::forgetting them.
+You can look at the [validation tests](https://github.com/yaws-rs/edifice/tree/main/slabbable-validation/src/lib.rs) or my [heavily-work-in-progress yaws io_uring abstractions](https://github.com/yaws-rs/io_uring-utils/tree/main/io-uring-epoll/src) how I use the Slabbable (or SelectedSlab) as the storage layer for the extended lifetime and complicated ownership items without simply std::mem::forgetting them.
 
 Or basically after `cargo add slabbable-impl-selector`:
 
