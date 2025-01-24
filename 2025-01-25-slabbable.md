@@ -6,7 +6,7 @@
 
 ## So what exactly is [Slabbable](https://docs.rs/slabbable) ?
 
-a trait designed for a very specific use providing some guardrails against implicit re-allocations.
+a trait designed for a very specific use providing some guardrails against implicit re-allocations and address instability.
 
 ![prevent-re-alloc](./assets/prevent-re-alloc.jpg)
 
