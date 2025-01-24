@@ -1,6 +1,6 @@
 # Slabbable for all your rotating stable slotmaps
 
-![meme slip slop slap](https://cdn.jsdelivr.net/gh/pinkforest/pinkforest@main/assets/slip-slop-slap.jpg)
+![meme slip slop slap](./assets/slip-slop-slap.jpg)
 
 *Note: It's summer time down here so maybe I should have named this as slip-slop-slap instead.*
 
