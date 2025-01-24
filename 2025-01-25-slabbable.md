@@ -21,6 +21,8 @@ You can look at the [validation tests](https://github.com/yaws-rs/edifice/tree/m
 Or basically after `cargo add slabbable-impl-selector`:
 
 ```rust
+// You can also directly use impl crate without opting via the selector
+// use slabbable_slab::SlabSlab as SelectedSlab;
 use slabbable_impl_selector::SelectedSlab;
 
 #[repr(C, packed)]
