@@ -100,19 +100,25 @@ Hash implementation at 10M initialized and filled takes more memory - an unsurpr
 
 I need to do more testing but this shows the importance of capacity and bounds planning given environment and use-scenarios that should form part of validation within the top-level binary.
 
-## Configurable Abstraction
+## Configurable Abstraction - What cfg()
 
-The idea is to give the top-level binary the power to choose the appropriate abstraction over well known ggood default e.g. as an override without transient dependencies either muddying or breaking the compilation - or worst miscompilation leading to unspecified behaviour.
+The idea is to give the top-level binary the power to choose the appropriate abstraction over well known good default e.g. as an override without transient dependencies either muddying or breaking the compilation - or worst miscompilation leading to unspecified behaviour.
 
-Often I see crates using feature flags to create mutually exclusive configuration knobs but it makes sense to use configuration or 'cfg' predicates.
+Often I see crates using feature flags non-optimally to create mutually exclusive configuration knobs when it would make more sense to use configuration or 'cfg' predicates for mutual exclusivity.
+
+## Configurable Abstration - Why cfg()
 
 If you would like to see more discussion around why using cfg makes more sense, have a look into the issue I keep referring people to: [dalek-cryptography/curve25519-dalek#414](https://github.com/dalek-cryptography/curve25519-dalek/issues/414) where we ended up abstracting backend override with cfg(curve25519_dalek_backend) for the v4 major release as well as cfg(curve25519_dalek_bits) [described](https://github.com/dalek-cryptography/curve25519-dalek/tree/main/curve25519-dalek#bits--word-size) in it's readme.
 
+## Cofiguration Abstraction - Real World cfg()
+
 I also found out nobody used non-default backend in curve25519-dalek because pretty much none of the dependant crates "relayed" the configuration options through features -- which may end up later being helped by the rfc and compiler implementation regarding globally mutually exclusive features.
+
+## Configuration Abstraction - Compiler Mandate
 
 Compiler also later formalized linting the expected configuration predicates vs occured ones so it's much less easy to make errors gating through typos - e.g. [cfg lint in curve25519-dalek](https://github.com/dalek-cryptography/curve25519-dalek/blob/main/curve25519-dalek/Cargo.toml#L75).
 
-## Reduce the cfg Gates
+## Reduce the cfg() Gates
 
 Gating can be very involved process when one has to change it in several places leading to hideous errors that may be hard to find especially when not properly continuously testing all the possible cfg combinations.
 
