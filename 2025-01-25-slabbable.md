@@ -48,7 +48,7 @@ It's also essential to not only validate but benchmark both timings and memory u
 
 Currently you can see how I can [validate](https://github.com/yaws-rs/edifice/blob/main/slabbable-validation/src/lib.rs#L24) multiple implementations based on harmonized trait.
 
-And how I can measure virt and phys memory usage under various scenarios in [mem.rs](https://github.com/yaws-rs/edifice/blob/main/slabbable-validation/src/bin/mem.rs) within the validation crate - which I'm planning to move under criterion as measurable as afaik I don't know anyone who has added trait impl for making convenient memory benchmarks.
+And how I can measure virt and phys memory usage under various scenarios in [mem.rs](https://github.com/yaws-rs/edifice/blob/main/slabbable-validation/src/bin/mem.rs) within the validation crate - which I'm planning to move under criterion as measurable -- afaik I don't know anyone who has added trait impl for making convenient memory benchmarks.
 
 ## Slabbable Implementations
 
@@ -84,9 +84,9 @@ Real conclusive differences come from chaos & load testing which I will do later
 
 However memory usage story is quite different between hash (default), slab and stablevecs.
 
-~/yaws/edifice/slabbable-validation$ cargo run
-~/yaws/edifice/slabbable-validation$ env RUSTFLAGS='--cfg slabbable_impl="slab"' cargo run
-~/yaws/edifice/slabbable-validation$ env RUSTFLAGS='--cfg slabbable_impl="stablevec"' cargo run
+* ~/yaws/edifice/slabbable-validation$ `cargo run`
+* ~/yaws/edifice/slabbable-validation$ `env RUSTFLAGS='--cfg slabbable_impl="slab"' cargo run`
+* ~/yaws/edifice/slabbable-validation$ `env RUSTFLAGS='--cfg slabbable_impl="stablevec"' cargo run`
 
 | impl      | 10M initialized baseline        | 10M filled increase           |
 | :---      | :---                            | :---                          |
@@ -116,11 +116,14 @@ Gating can be very involved process when one has to change it in several places 
 
 One can also help to reduce "the gating" around as seen in curve25519_dalek by abstracting "selected implementation" through proxy type either as:
 
+```rust
 pub type SelectedSlab<Item> = slabbable_hash::HashSlab<Item>
+```
 
 Or re-exporting:
-
+```rust
 pub use slabbable_hash::HashSlab as SelectedSlab;
+```
 
 The minor difference is the compiler will scream any errors referring to the concrete impl instead of proxy type when using pub type whcih has the trade-off having to line-up the containerized generic in the pub type alias.
 
@@ -132,4 +135,16 @@ Having proxy aliased-types can help reducing the amount of gating required in mu
 
 You can also cfg-validation as I do in the slabbable-impl-selector in build.rs like in [curve25519-dalek/build.rs](https://github.com/dalek-cryptography/curve25519-dalek/blob/main/curve25519-dalek/build.rs).
 
+## Tradeoffs
 
+I don't care too much about memory usage at the moment but rather bound the maximum capacity.
+
+I could probably improve ramp-up / down memory usage but I rather just bound the maximum.
+
+In server programing I typically like to make it easily able to calculate total resource usage.
+
+## Obligatory Support my Work
+
+If you would like to help, please feel free to send and issue or a PR.
+
+I would also like to participate capitalism including relating to my work so let me know if I can help :)
