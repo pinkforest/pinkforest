@@ -16,13 +16,15 @@ For example it is quite easy to implicitly make Vec re-allocate and invalidate t
 
 ![deal-with-vec](./assets/deal-with-vec.jpg)
 
-If we can try to help the situation by giving more explicit API it could help the situation maybe.
+We can try to target our use-case by giving more explicit API it could help our situation perhaps.
+
+On top of this the trait provides explicit harmonized API surface for in-advance-reservation and re-usability.
 
 ## Why so Abstract ?
 
 I simply wanted a harmonized but yet configurable type that acts a bit like [stable-vec](https://crates.io/crates/stable-vec), [slab](https://crates.io/crates/slab) or [slotmap](https://crates.io/crates/slotmap).
 
-It helps me test my specific use-scenario and validate the exact guarantees I need (rather than want) as well as bench and profile them more easily when the trait and it's implementations are molded in the usage specific scenario -- as I do in the [slabbable-validation](https://github.com/yaws-rs/edifice/tree/main/slabbable-validation) crate within the monorepo holding these things together.
+It helps me test my specific use-scenario and validate the exact guarantees I need (rather than want) as well as bench and profile them more easily when the trait and it's implementations are molded into the usage specific scenario -- as I do in the [slabbable-validation](https://github.com/yaws-rs/edifice/tree/main/slabbable-validation) crate within the monorepo holding these things together.
 
 ## How do I use it?
 
