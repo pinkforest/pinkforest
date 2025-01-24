@@ -147,14 +147,16 @@ You can also cfg-validation as I do in the slabbable-impl-selector in build.rs l
 
 ## Tradeoffs
 
-I don't care too much about memory usage at the moment but rather bound the maximum capacity.
+I don't care too much about memory usage at the moment but rather the "worst case" e.g. by creating bounds at the very the maximum capacity where it may be more difficult to free memory in between.
 
-I could probably improve ramp-up / down memory usage but I rather just bound the maximum.
+I could probably improve ramp-up / down memory usage but I rather just bound the maximum to optimize my use-scenarios.
 
 In server programing I typically like to make it easily able to calculate total resource usage.
 
-## Obligatory Support my Work
+## Obligatory Support my Work Msg
 
 If you would like to help, please feel free to send and issue or a PR.
 
-I would also like to participate capitalism including relating to my work so let me know if I can help :)
+I would also like to participate capitalism including relating to my work so let me know if I can help or if you feel that my work helps you in any way :)
+
+You can find me at [Discord](https://discord.gg/rXVsmzhaZa).
