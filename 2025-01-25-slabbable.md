@@ -10,16 +10,17 @@ a trait designed for a very specific use, mainly in my io_uring storage layer.
 
 ## Why?
 
-I simply wanted a harmonized but yet configurable type that acts a bit like [stable-vec](https://crates.io/crates/stable-vec) or [slab](https://crates.io/crates/slab) or [slotmap](https://crates.io/crates/slotmap).
+I simply wanted a harmonized but yet configurable type that acts a bit like [stable-vec](https://crates.io/crates/stable-vec), [slab](https://crates.io/crates/slab) or [slotmap](https://crates.io/crates/slotmap).
 
-It helps me test my specific use-scenario and validate the guarantees I need rather than want as well as bench and profile them more easily when the trait and it's implementations are molded in the usage specific scenario as I do in the [slabbable-validation](https://github.com/yaws-rs/edifice/tree/main/slabbable-validation) crate within the monorepo holding these things together.
+It helps me test my specific use-scenario and validate the exact guarantees I need (rather than want) as well as bench and profile them more easily when the trait and it's implementations are molded in the usage specific scenario -- as I do in the [slabbable-validation](https://github.com/yaws-rs/edifice/tree/main/slabbable-validation) crate within the monorepo holding these things together.
 
 ## How do I use it?
 
-You can look at [validation tests](https://github.com/yaws-rs/edifice/tree/main/slabbable-validation/src/lib.rs) or my [heavily-work-in-progress yaws io_uring abstractions](https://github.com/yaws-rs/io_uring-utils/io-uring-epoll/src) how I use Slabbable as the storage holder for extended lifetime items without forgetting them.
+You can look at the [validation tests](https://github.com/yaws-rs/edifice/tree/main/slabbable-validation/src/lib.rs) or my [heavily-work-in-progress yaws io_uring abstractions](https://github.com/yaws-rs/io_uring-utils/blob/mail/io-uring-epoll/src) how I use the Slabbable (or SelectedSlab) as the storage layer for the extended lifetime and complicated ownership items without simply std::mem::forgetting them.
 
-Basically after cargo add slabbable-impl-selector:
+Or basically after `cargo add slabbable-impl-selector`:
 
+```rust
 use slabbable_impl_selector::SelectedSlab;
 
 #[repr(C, packed)]
@@ -32,7 +33,8 @@ let slab = SelectedSlab::<MYCData>::with_fixed_capacity(1);
 let first_key = slab.take_next_with(MyCData { whatever: 1 }).expect("We should be able to take one and the only one.");
 // assert_eq!(first_key, 0 as usize); // we can't rely on this, each impl ideally specifies the issue order
 // slab.take_next_with(MYCData { whatever: 2 }).expect("This would be correct, we were guarded from re-allocating over the bounded fixed capacity.");
-let first_ref = slab.slot_get_ref(first_key);
+let first_ref = slab.slot_get_ref(first_key); // &raw first_ref is now relatively stable(ish)
+```
 
 ## Guardrails
 
