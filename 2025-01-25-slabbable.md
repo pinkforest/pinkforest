@@ -6,11 +6,19 @@
 
 ## So what exactly is [Slabbable](https://docs.rs/slabbable) ?
 
-a trait designed for a very specific use.
+a trait designed for a very specific use providing some guardrails against implicit re-allocations.
+
+![prevent-re-alloc](./assets/prevent-re-alloc.jpg)
 
 I needed it as the storage layer within my io_uring abstractions involving complicated sandwitch of three-way ownership (Kernel-Userspace-Abstraction) and unforgettable lifetimes between them.
 
-## Why be so Abstract ?
+For example it is quite easy to implicitly make Vec re-allocate and invalidate the underlying addresses.
+
+![deal-with-vec](./assets/deal-with-vec.jpg)
+
+If we can try to help the situation by giving more explicit API it could help the situation maybe.
+
+## Why so Abstract ?
 
 I simply wanted a harmonized but yet configurable type that acts a bit like [stable-vec](https://crates.io/crates/stable-vec), [slab](https://crates.io/crates/slab) or [slotmap](https://crates.io/crates/slotmap).
 
