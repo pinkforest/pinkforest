@@ -159,4 +159,4 @@ If you would like to help, please feel free to send and issue or a PR.
 
 I would also like to participate capitalism including relating to my work so let me know if I can help or if you feel that my work helps you in any way :)
 
-You can find me at [Discord](https://discord.gg/rXVsmzhaZa).
+You can find me at [My personal Discord](https://discord.gg/rXVsmzhaZa) or [Another smol Discord](https://discord.gg/pW35BNSBeV).
