@@ -36,6 +36,8 @@ let first_key = slab.take_next_with(MyCData { whatever: 1 }).expect("We should b
 let first_ref = slab.slot_get_ref(first_key); // &raw first_ref is now relatively stable(ish)
 ```
 
+See [the trait docs](https://docs.rs/slabbable/latest/slabbable/trait.Slabbable.html#required-methods) for full intended API spec.
+
 ## Guardrails
 
 It's quite easy to leave something undocumented and then realize that it's not acting as one would assume.
