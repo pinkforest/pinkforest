@@ -5,6 +5,7 @@
 * [Current Projects](./Projects.md)
 * [2024-06-11 msg-auth-status](./2024-06-11-msg-auth-status.md)
 * [2025-01-25 Slabbable](./2025-01-25-slabbable.md)
+* [2025-12-04 io_urick](./2025-12-04-io-urick.md)
 
 My other blog [missmissm.medium.com](https://missmissm.medium.com) and my YouTube Radio show 🛰️ [@RKitchNs](https://www.youtube.com/@RKitchNs) 🧂🦀
 
